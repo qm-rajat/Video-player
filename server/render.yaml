@@ -1,0 +1,43 @@
+services:
+  - type: web
+    name: adult-content-api
+    env: node
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: MONGO_URI
+        fromDatabase:
+          name: adult-content-db
+          property: connectionString
+      - key: JWT_SECRET
+        generateValue: true
+      - key: CLOUD_NAME
+        sync: false
+      - key: CLOUD_API_KEY
+        sync: false
+      - key: CLOUD_API_SECRET
+        sync: false
+      - key: STRIPE_SECRET_KEY
+        sync: false
+      - key: STRIPE_WEBHOOK_SECRET
+        sync: false
+      - key: GOOGLE_CLIENT_ID
+        sync: false
+      - key: GOOGLE_CLIENT_SECRET
+        sync: false
+      - key: TWITTER_CONSUMER_KEY
+        sync: false
+      - key: TWITTER_CONSUMER_SECRET
+        sync: false
+      - key: CLIENT_URL
+        value: https://your-frontend-domain.vercel.app
+
+databases:
+  - name: adult-content-db
+    databaseName: adult_content_platform
+    user: admin
