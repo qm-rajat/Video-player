@@ -19,6 +19,7 @@ const mediaRoutes = require('./routes/media');
 const userRoutes = require('./routes/users');
 const paymentRoutes = require('./routes/payments');
 const adminRoutes = require('./routes/admin');
+const animeRoutes = require('./routes/anime');
 
 // Import middleware
 const { errorHandler } = require('./middleware/errorHandler');
@@ -31,6 +32,8 @@ const app = express();
 app.use(helmet({
   contentSecurityPolicy: false,
   crossOriginEmbedderPolicy: false,
+  crossOriginResourcePolicy: false,
+  crossOriginOpenerPolicy: false,
   frameguard: false
 }));
 
@@ -96,6 +99,7 @@ app.use('/api/media', mediaRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/payments', paymentRoutes);
 app.use('/api/admin', adminRoutes);
+app.use('/api/anime', animeRoutes);
 
 // API 404 handler
 app.all('/api/*', (req, res) => {

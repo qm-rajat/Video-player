@@ -36,7 +36,14 @@ const Header = () => {
           </div>
 
           {/* Navigation */}
-          <nav className="flex items-center space-x-4">
+          <nav className="flex items-center space-x-3">
+            <Link
+              to="/anime-hub"
+              className="hidden md:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-gradient-to-r from-purple-600/30 to-pink-600/30 text-purple-200 border border-purple-500/40 hover:from-purple-600 hover:to-pink-600 hover:text-white transition-all shadow-sm"
+            >
+              <span>✨</span>
+              <span>Anime Hub (Free APIs)</span>
+            </Link>
             {isAuthenticated ? (
               <>
                 {/* Upload Button (Creators only) */}

@@ -1,6 +1,14 @@
 import axios from 'axios';
 
-const API_URL = process.env.REACT_APP_API_URL || '/api';
+// In browser runtime, always use relative '/api' to communicate with the host Express server
+const getApiBaseUrl = () => {
+  if (typeof window !== 'undefined') {
+    return '/api';
+  }
+  return process.env.REACT_APP_API_URL || '/api';
+};
+
+const API_URL = getApiBaseUrl();
 
 // Create axios instance
 const api = axios.create({

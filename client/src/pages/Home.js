@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchMedia, fetchTrendingMedia, selectMedia } from '../store/slices/mediaSlice';
 import MediaGrid from '../components/Media/MediaGrid';
@@ -35,18 +36,44 @@ const Home = () => {
               Watch high-definition anime episodes, breathtaking sakuga animation highlights, and original works from top anime creators.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="#latest" className="btn btn-secondary shadow-lg">
-                Explore Anime
-              </a>
-              <button 
-                onClick={() => dispatch(fetchMedia({ page: 1, limit: 20 }))}
+              <Link to="/anime-hub" className="btn btn-secondary shadow-lg">
+                ⚡ Open Anime Stream Hub
+              </Link>
+              <a 
+                href="#latest"
                 className="btn btn-outline border-white text-white hover:bg-white hover:text-purple-700"
               >
-                Trending Sakuga
-              </button>
+                Browse Videos
+              </a>
             </div>
           </div>
           <div className="absolute inset-0 bg-black opacity-30"></div>
+        </section>
+
+        {/* Free Anime Video APIs Hub Banner */}
+        <section className="bg-gradient-to-r from-indigo-900/60 via-purple-900/50 to-dark-800 rounded-2xl p-6 border border-purple-500/30 flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">
+          <div className="space-y-2">
+            <div className="flex items-center gap-2">
+              <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-purple-500/20 text-purple-300 border border-purple-500/30">
+                FREE ANIME VIDEO APIS INTEGRATED
+              </span>
+              <span className="px-2 py-0.5 rounded-full text-xs bg-green-500/20 text-green-300 font-medium">
+                Live & Playable
+              </span>
+            </div>
+            <h2 className="text-2xl font-bold text-white">
+              Official Free Episodes, Direct Openings & Anime PVs
+            </h2>
+            <p className="text-purple-200/80 text-sm max-w-2xl">
+              Stream high-bitrate direct video files from <strong>AnimeThemes API</strong> (.webm/.mp4), <strong>AniList GraphQL</strong>, <strong>Jikan v4</strong>, and official studio channels.
+            </p>
+          </div>
+          <Link
+            to="/anime-hub"
+            className="btn btn-primary bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-semibold px-6 py-3 rounded-xl shadow-lg shadow-purple-600/30 whitespace-nowrap"
+          >
+            Launch Anime Hub ▶
+          </Link>
         </section>
 
         {/* Trending Content */}

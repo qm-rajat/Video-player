@@ -21,6 +21,7 @@ import CreatorDashboard from './pages/Creator/Dashboard';
 import Upload from './pages/Creator/Upload';
 import MediaView from './pages/Media/MediaView';
 import Search from './pages/Search';
+import AnimeHub from './pages/Anime/AnimeHub';
 import Subscriptions from './pages/Subscriptions';
 import AdminPanel from './pages/Admin/AdminPanel';
 import Legal from './pages/Legal';
@@ -80,6 +81,12 @@ function App() {
           <Route path="/search" element={
             <Layout>
               <Search />
+            </Layout>
+          } />
+
+          <Route path="/anime-hub" element={
+            <Layout>
+              <AnimeHub />
             </Layout>
           } />
 
