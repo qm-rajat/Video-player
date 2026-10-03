@@ -1,6 +1,6 @@
-# Adult Content Platform - MERN Stack
+# Anime Content Platform - MERN Stack
 
-A full-stack adult content platform built with the MERN stack, featuring user-generated content, subscriptions, payments, and comprehensive moderation tools.
+A full-stack Anime content platform built with the MERN stack, featuring user-generated content, subscriptions, payments, and comprehensive moderation tools.
 
 ## 🚀 Features
 
@@ -253,7 +253,7 @@ This project is licensed under the MIT License.
 
 ## ⚠️ Important Notes
 
-- This is an adult content platform - ensure compliance with local laws
+- This is an Anime content platform - ensure compliance with local laws
 - Implement proper age verification in production
 - Use HTTPS in production environments
 - Regularly update dependencies for security
