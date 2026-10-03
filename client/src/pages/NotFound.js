@@ -6,7 +6,7 @@ const NotFound = () => {
   return (
     <>
       <Helmet>
-        <title>Page Not Found - Adult Content Platform</title>
+        <title>Page Not Found - Anime Video Platform</title>
         <meta name="description" content="The page you're looking for doesn't exist." />
       </Helmet>
 

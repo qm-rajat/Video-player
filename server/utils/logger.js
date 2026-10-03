@@ -10,7 +10,7 @@ const logger = winston.createLogger({
     winston.format.errors({ stack: true }),
     winston.format.json()
   ),
-  defaultMeta: { service: 'adult-content-api' },
+  defaultMeta: { service: 'anime-content-api' },
   transports: [
     new winston.transports.File({
       filename: path.join(__dirname, '../logs/error.log'),

@@ -5,10 +5,10 @@ import { toast } from 'react-hot-toast';
 // Initial state
 const initialState = {
   user: null,
-  token: localStorage.getItem('token'),
+  token: typeof window !== 'undefined' ? localStorage.getItem('token') : null,
   isAuthenticated: false,
-  isLoading: true,
-  ageVerified: localStorage.getItem('ageVerified') === 'true',
+  isLoading: typeof window !== 'undefined' ? !!localStorage.getItem('token') : false,
+  ageVerified: true,
   error: null,
 };
 

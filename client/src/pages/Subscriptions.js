@@ -5,8 +5,8 @@ const Subscriptions = () => {
   return (
     <>
       <Helmet>
-        <title>Subscriptions - Adult Content Platform</title>
-        <meta name="description" content="Manage your subscriptions and payments." />
+        <title>Subscriptions - Anime Video Platform</title>
+        <meta name="description" content="Manage your anime channel subscriptions and support animators." />
       </Helmet>
 
       <div className="space-y-6">

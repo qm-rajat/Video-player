@@ -12,7 +12,7 @@ cloudinary.config({
 const uploadImage = async (file, options = {}) => {
   try {
     const defaultOptions = {
-      folder: 'adult-content/images',
+      folder: 'anime-content/images',
       resource_type: 'image',
       quality: 'auto:good',
       format: 'auto',
@@ -45,7 +45,7 @@ const uploadImage = async (file, options = {}) => {
 const uploadVideo = async (file, options = {}) => {
   try {
     const defaultOptions = {
-      folder: 'adult-content/videos',
+      folder: 'anime-content/videos',
       resource_type: 'video',
       quality: 'auto:good',
       video_codec: 'h264',
@@ -80,7 +80,7 @@ const uploadVideo = async (file, options = {}) => {
 const generateThumbnail = async (videoPublicId, options = {}) => {
   try {
     const defaultOptions = {
-      folder: 'adult-content/thumbnails',
+      folder: 'anime-content/thumbnails',
       resource_type: 'video',
       format: 'jpg',
       transformation: [
@@ -146,7 +146,7 @@ const generateSignedUploadUrl = (options = {}) => {
     
     const params = {
       timestamp,
-      folder: options.folder || 'adult-content/uploads',
+      folder: options.folder || 'anime-content/uploads',
       ...options
     };
 

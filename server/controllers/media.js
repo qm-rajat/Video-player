@@ -1,10 +1,12 @@
 const { validationResult } = require('express-validator');
 const cloudinary = require('cloudinary').v2;
+const mongoose = require('mongoose');
 const Media = require('../models/Media');
 const Comment = require('../models/Comment');
 const User = require('../models/User');
 const { asyncHandler } = require('../middleware/asyncHandler');
 const { logger } = require('../utils/logger');
+const { mockMedia } = require('../utils/mockStore');
 
 // Configure Cloudinary
 cloudinary.config({
@@ -15,7 +17,7 @@ cloudinary.config({
 
 // @desc    Get all media with filtering and pagination
 // @route   GET /api/media
-// @access  Private (Age verified)
+// @access  Public (Age verified)
 exports.getMedia = asyncHandler(async (req, res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -29,6 +31,25 @@ exports.getMedia = asyncHandler(async (req, res) => {
   const page = parseInt(req.query.page, 10) || 1;
   const limit = parseInt(req.query.limit, 10) || 20;
   const startIndex = (page - 1) * limit;
+
+  // Fallback to mock media if database is not connected
+  if (mongoose.connection.readyState !== 1) {
+    let filtered = [...mockMedia];
+    if (req.query.category) {
+      filtered = filtered.filter(m => m.category?.toLowerCase() === req.query.category?.toLowerCase());
+    }
+    return res.status(200).json({
+      success: true,
+      count: filtered.length,
+      pagination: {
+        page,
+        limit,
+        total: filtered.length,
+        pages: Math.ceil(filtered.length / limit) || 1
+      },
+      data: filtered
+    });
+  }
 
   // Build query
   let query = Media.find({ 
@@ -102,8 +123,16 @@ exports.getMedia = asyncHandler(async (req, res) => {
 
 // @desc    Get single media by ID
 // @route   GET /api/media/:id
-// @access  Private (Age verified, subscription check)
+// @access  Public (Age verified, subscription check)
 exports.getMediaById = asyncHandler(async (req, res) => {
+  if (mongoose.connection.readyState !== 1) {
+    const item = mockMedia.find(m => m._id === req.params.id) || mockMedia[0];
+    return res.status(200).json({
+      success: true,
+      data: item
+    });
+  }
+
   const media = await Media.findById(req.params.id)
     .populate('creator', 'username profile isVerified subscriberCount')
     .populate({
@@ -176,7 +205,7 @@ exports.uploadMedia = asyncHandler(async (req, res) => {
     // Upload media to Cloudinary
     const mediaUpload = await new Promise((resolve, reject) => {
       const uploadOptions = {
-        folder: 'adult-content/media',
+        folder: 'anime-content/media',
         resource_type: 'auto',
         quality: 'auto:good',
         format: 'auto'
@@ -202,7 +231,7 @@ exports.uploadMedia = asyncHandler(async (req, res) => {
       thumbnailUpload = await new Promise((resolve, reject) => {
         cloudinary.uploader.upload_stream(
           {
-            folder: 'adult-content/thumbnails',
+            folder: 'anime-content/thumbnails',
             resource_type: 'image',
             quality: 'auto:good',
             format: 'auto',
@@ -219,7 +248,7 @@ exports.uploadMedia = asyncHandler(async (req, res) => {
     } else if (mediaFile.mimetype.startsWith('video/')) {
       // Generate thumbnail from video
       thumbnailUpload = await cloudinary.uploader.upload(mediaUpload.secure_url, {
-        folder: 'adult-content/thumbnails',
+        folder: 'anime-content/thumbnails',
         resource_type: 'video',
         format: 'jpg',
         transformation: [
@@ -348,6 +377,18 @@ exports.deleteMedia = asyncHandler(async (req, res) => {
 // @route   POST /api/media/:id/like
 // @access  Private
 exports.likeMedia = asyncHandler(async (req, res) => {
+  if (mongoose.connection.readyState !== 1) {
+    const media = mockMedia.find(m => m._id === req.params.id);
+    if (media) {
+      media.likeCount = (media.likeCount || 0) + 1;
+    }
+    return res.status(200).json({
+      success: true,
+      message: 'Media liked',
+      data: { id: req.params.id, likeCount: media ? media.likeCount : 1 }
+    });
+  }
+
   const media = await Media.findById(req.params.id);
 
   if (!media) {
@@ -384,6 +425,18 @@ exports.likeMedia = asyncHandler(async (req, res) => {
 // @route   DELETE /api/media/:id/like
 // @access  Private
 exports.unlikeMedia = asyncHandler(async (req, res) => {
+  if (mongoose.connection.readyState !== 1) {
+    const media = mockMedia.find(m => m._id === req.params.id);
+    if (media && media.likeCount > 0) {
+      media.likeCount -= 1;
+    }
+    return res.status(200).json({
+      success: true,
+      message: 'Media unliked successfully',
+      data: { id: req.params.id, likeCount: media ? media.likeCount : 0 }
+    });
+  }
+
   const media = await Media.findById(req.params.id);
 
   if (!media) {

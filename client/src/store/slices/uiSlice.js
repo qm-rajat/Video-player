@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 // Initial state
 const initialState = {
-  darkMode: true, // Adult content platforms typically use dark themes
+  darkMode: true, // Anime streaming platforms use sleek dark themes
   sidebarOpen: false,
   notifications: [],
   modal: {

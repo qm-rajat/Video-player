@@ -12,10 +12,10 @@ const Footer = () => {
               <div className="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center">
                 <span className="text-white font-bold text-lg">A</span>
               </div>
-              <span className="text-xl font-bold text-white">AdultPlatform</span>
+              <span className="text-xl font-bold text-white">AnimePlatform</span>
             </Link>
             <p className="text-dark-400 text-sm">
-              The premier platform for adult content creators and their fans.
+              The premier platform for anime video streaming, creators, and their fans.
             </p>
           </div>
 
@@ -75,7 +75,7 @@ const Footer = () => {
 
           {/* Creators */}
           <div>
-            <h3 className="text-white font-semibold mb-4">For Creators</h3>
+            <h3 className="text-white font-semibold mb-4">For Animators & Creators</h3>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link to="/creator-guide" className="text-dark-400 hover:text-white transition-colors">
@@ -103,7 +103,7 @@ const Footer = () => {
 
         <div className="border-t border-dark-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-dark-400 text-sm">
-            © 2024 AdultPlatform. All rights reserved.
+            © 2026 AnimePlatform. All rights reserved.
           </p>
           
           <div className="flex space-x-4 mt-4 md:mt-0">
@@ -123,11 +123,10 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Age verification notice */}
-        <div className="mt-8 p-4 bg-dark-700 rounded-lg">
+        {/* Anime streaming notice */}
+        <div className="mt-8 p-4 bg-dark-700/60 border border-dark-600 rounded-lg">
           <p className="text-dark-300 text-sm text-center">
-            <span className="font-semibold text-primary-400">18+ ONLY:</span> This website contains adult content and is intended for adults only. 
-            All models are 18 years of age or older. By entering this site, you confirm that you are of legal age to view adult content in your jurisdiction.
+            <span className="font-semibold text-primary-400">ANIME COMMUNITY:</span> AnimePlatform is a dedicated hub for anime video streaming, original creator animations, and sakuga highlights. All animations and video materials are curated for anime fans worldwide.
           </p>
         </div>
       </div>

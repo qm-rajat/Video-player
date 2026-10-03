@@ -25,7 +25,7 @@ A full-stack Anime content platform built with the MERN stack, featuring user-ge
 ## 📁 Project Structure
 
 ```
-adult-content-platform/
+anime-content-platform/
 ├── client/                 # React frontend
 │   ├── public/
 │   ├── src/
@@ -96,7 +96,7 @@ REACT_APP_CLOUDINARY_CLOUD_NAME=your_cloudinary_cloud_name
 1. **Clone the repository**
 ```bash
 git clone <repository-url>
-cd adult-content-platform
+cd anime-content-platform
 ```
 
 2. **Install dependencies**
@@ -210,7 +210,7 @@ vercel
 
 ## 🎨 UI/UX Features
 
-- **Dark Theme**: Adult-focused dark design
+- **Dark Theme**: Anime-focused sleek dark aesthetic
 - **Responsive Design**: Mobile-first approach
 - **Infinite Scroll**: Seamless content browsing
 - **Video Player**: Custom video player with controls

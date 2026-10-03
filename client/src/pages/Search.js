@@ -31,7 +31,7 @@ const Search = () => {
   return (
     <>
       <Helmet>
-        <title>{query ? `Search: ${query}` : 'Search'} - Adult Content Platform</title>
+        <title>{query ? `Search: ${query}` : 'Search'} - Anime Video Platform</title>
         <meta name="description" content={`Search results for ${query}`} />
       </Helmet>
 
@@ -40,7 +40,7 @@ const Search = () => {
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
           <div>
             <h1 className="text-2xl font-bold text-white">
-              {query ? `Search results for "${query}"` : 'Search Content'}
+              {query ? `Search results for "${query}"` : 'Search Anime Content'}
             </h1>
             {searchResults.length > 0 && (
               <p className="text-dark-400 mt-1">
@@ -56,17 +56,19 @@ const Search = () => {
               onChange={(e) => handleFilterChange('category', e.target.value)}
               className="bg-dark-700 border border-dark-600 rounded-lg px-3 py-2 text-white text-sm"
             >
-              <option value="">All Categories</option>
-              <option value="amateur">Amateur</option>
-              <option value="professional">Professional</option>
-              <option value="couples">Couples</option>
-              <option value="solo-female">Solo Female</option>
-              <option value="solo-male">Solo Male</option>
-              <option value="group">Group</option>
-              <option value="fetish">Fetish</option>
-              <option value="bdsm">BDSM</option>
-              <option value="roleplay">Roleplay</option>
-              <option value="vintage">Vintage</option>
+              <option value="">All Anime Genres</option>
+              <option value="action">Action</option>
+              <option value="shonen">Shonen</option>
+              <option value="isekai">Isekai</option>
+              <option value="fantasy">Fantasy</option>
+              <option value="scifi">Sci-Fi</option>
+              <option value="romance">Romance</option>
+              <option value="slice-of-life">Slice of Life</option>
+              <option value="comedy">Comedy</option>
+              <option value="mecha">Mecha</option>
+              <option value="supernatural">Supernatural</option>
+              <option value="amv">AMV</option>
+              <option value="movie">Movie</option>
             </select>
 
             <select

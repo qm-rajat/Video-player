@@ -49,8 +49,8 @@ router.get('/', [
   requireAgeVerification,
   query('page').optional().isInt({ min: 1 }).withMessage('Page must be a positive integer'),
   query('limit').optional().isInt({ min: 1, max: 50 }).withMessage('Limit must be between 1 and 50'),
-  query('category').optional().isIn(['amateur', 'professional', 'couples', 'solo-female', 'solo-male', 'group', 'fetish', 'bdsm', 'roleplay', 'vintage', 'other']),
-  query('sort').optional().isIn(['newest', 'oldest', 'popular', 'trending', 'most-liked'])
+  query('category').optional().isString(),
+  query('sort').optional().isString()
 ], getMedia);
 
 router.get('/search', [
@@ -68,10 +68,16 @@ router.get('/creator/:creatorId', [
   query('limit').optional().isInt({ min: 1, max: 50 })
 ], getCreatorMedia);
 
+router.get('/:id', [requireAgeVerification, checkSubscriptionAccess], getMediaById);
+
+router.get('/:id/comments', [
+  requireAgeVerification,
+  query('page').optional().isInt({ min: 1 }),
+  query('limit').optional().isInt({ min: 1, max: 100 })
+], getComments);
+
 // Protected routes
 router.use(protect);
-
-router.get('/:id', [requireAgeVerification, checkSubscriptionAccess], getMediaById);
 
 router.post('/:id/view', [requireAgeVerification], recordView);
 
@@ -86,13 +92,6 @@ router.post('/:id/report', [
   body('reason').isIn(['inappropriate-content', 'copyright-violation', 'spam', 'harassment', 'underage', 'non-consensual', 'violence', 'other']),
   body('description').optional().isLength({ max: 500 })
 ], reportMedia);
-
-// Comment routes
-router.get('/:id/comments', [
-  requireAgeVerification,
-  query('page').optional().isInt({ min: 1 }),
-  query('limit').optional().isInt({ min: 1, max: 100 })
-], getComments);
 
 router.post('/:id/comments', [
   requireAgeVerification,
@@ -120,7 +119,7 @@ router.post('/upload', [
   ]),
   body('title').notEmpty().isLength({ max: 100 }).withMessage('Title is required and must be under 100 characters'),
   body('description').optional().isLength({ max: 2000 }).withMessage('Description must be under 2000 characters'),
-  body('category').isIn(['amateur', 'professional', 'couples', 'solo-female', 'solo-male', 'group', 'fetish', 'bdsm', 'roleplay', 'vintage', 'other']),
+  body('category').isIn(['action', 'shonen', 'isekai', 'fantasy', 'scifi', 'romance', 'slice-of-life', 'comedy', 'mecha', 'supernatural', 'amv', 'movie', 'other']),
   body('tags').optional().isArray({ max: 10 }).withMessage('Maximum 10 tags allowed'),
   body('tags.*').optional().isLength({ max: 30 }).withMessage('Each tag must be under 30 characters'),
   body('isPremium').optional().isBoolean(),

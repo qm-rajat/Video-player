@@ -5,8 +5,8 @@ const Profile = () => {
   return (
     <>
       <Helmet>
-        <title>Profile - Adult Content Platform</title>
-        <meta name="description" content="Manage your profile and account settings." />
+        <title>Profile - Anime Video Platform</title>
+        <meta name="description" content="Manage your anime profile and favorites." />
       </Helmet>
 
       <div className="space-y-6">

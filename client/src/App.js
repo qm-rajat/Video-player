@@ -30,12 +30,14 @@ import NotFound from './pages/NotFound';
 import { loadUser } from './store/slices/authSlice';
 import { selectAuth } from './store/slices/authSlice';
 
-// Initialize Stripe
-const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY);
+// Initialize Stripe safely
+const stripePromise = process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY
+  ? loadStripe(process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY)
+  : null;
 
 function App() {
   const dispatch = useDispatch();
-  const { isLoading, isAuthenticated, user, ageVerified } = useSelector(selectAuth);
+  const { isLoading, isAuthenticated } = useSelector(selectAuth);
 
   useEffect(() => {
     // Load user on app start
@@ -53,95 +55,94 @@ function App() {
     );
   }
 
-  return (
-    <Elements stripe={stripePromise}>
-      <div className="App min-h-screen bg-dark-900 text-white">
-        <AgeVerificationGate>
-          <Routes>
-            {/* Public Routes */}
-            <Route path="/login" element={
-              isAuthenticated ? <Navigate to="/" replace /> : <Login />
-            } />
-            <Route path="/register" element={
-              isAuthenticated ? <Navigate to="/" replace /> : <Register />
-            } />
-            <Route path="/forgot-password" element={<ForgotPassword />} />
-            <Route path="/reset-password/:token" element={<ResetPassword />} />
-            <Route path="/legal/:page" element={<Legal />} />
+  const content = (
+    <div className="App min-h-screen bg-dark-900 text-white">
+      <AgeVerificationGate>
+        <Routes>
+          {/* Public Routes */}
+          <Route path="/login" element={
+            isAuthenticated ? <Navigate to="/" replace /> : <Login />
+          } />
+          <Route path="/register" element={
+            isAuthenticated ? <Navigate to="/" replace /> : <Register />
+          } />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/reset-password/:token" element={<ResetPassword />} />
+          <Route path="/legal/:page" element={<Legal />} />
 
-            {/* Protected Routes */}
-            <Route path="/" element={
-              <ProtectedRoute>
-                <Layout>
-                  <Home />
-                </Layout>
-              </ProtectedRoute>
-            } />
+          {/* Browsing Routes */}
+          <Route path="/" element={
+            <Layout>
+              <Home />
+            </Layout>
+          } />
 
-            <Route path="/search" element={
-              <ProtectedRoute>
-                <Layout>
-                  <Search />
-                </Layout>
-              </ProtectedRoute>
-            } />
+          <Route path="/search" element={
+            <Layout>
+              <Search />
+            </Layout>
+          } />
 
-            <Route path="/media/:id" element={
-              <ProtectedRoute>
-                <Layout>
-                  <MediaView />
-                </Layout>
-              </ProtectedRoute>
-            } />
+          <Route path="/media/:id" element={
+            <Layout>
+              <MediaView />
+            </Layout>
+          } />
 
-            <Route path="/profile" element={
-              <ProtectedRoute>
-                <Layout>
-                  <Profile />
-                </Layout>
-              </ProtectedRoute>
-            } />
+          {/* Protected Routes */}
+          <Route path="/profile" element={
+            <ProtectedRoute>
+              <Layout>
+                <Profile />
+              </Layout>
+            </ProtectedRoute>
+          } />
 
-            <Route path="/subscriptions" element={
-              <ProtectedRoute>
-                <Layout>
-                  <Subscriptions />
-                </Layout>
-              </ProtectedRoute>
-            } />
+          <Route path="/subscriptions" element={
+            <ProtectedRoute>
+              <Layout>
+                <Subscriptions />
+              </Layout>
+            </ProtectedRoute>
+          } />
 
-            {/* Creator Routes */}
-            <Route path="/creator/dashboard" element={
-              <ProtectedRoute requiredRole="creator">
-                <Layout>
-                  <CreatorDashboard />
-                </Layout>
-              </ProtectedRoute>
-            } />
+          {/* Creator Routes */}
+          <Route path="/creator/dashboard" element={
+            <ProtectedRoute requiredRole="creator">
+              <Layout>
+                <CreatorDashboard />
+              </Layout>
+            </ProtectedRoute>
+          } />
 
-            <Route path="/creator/upload" element={
-              <ProtectedRoute requiredRole="creator">
-                <Layout>
-                  <Upload />
-                </Layout>
-              </ProtectedRoute>
-            } />
+          <Route path="/creator/upload" element={
+            <ProtectedRoute requiredRole="creator">
+              <Layout>
+                <Upload />
+              </Layout>
+            </ProtectedRoute>
+          } />
 
-            {/* Admin Routes */}
-            <Route path="/admin/*" element={
-              <ProtectedRoute requiredRole="admin">
-                <Layout>
-                  <AdminPanel />
-                </Layout>
-              </ProtectedRoute>
-            } />
+          {/* Admin Routes */}
+          <Route path="/admin/*" element={
+            <ProtectedRoute requiredRole="admin">
+              <Layout>
+                <AdminPanel />
+              </Layout>
+            </ProtectedRoute>
+          } />
 
-            {/* 404 Route */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </AgeVerificationGate>
-      </div>
-    </Elements>
+          {/* 404 Route */}
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </AgeVerificationGate>
+    </div>
+  );
+
+  return stripePromise ? (
+    <Elements stripe={stripePromise}>{content}</Elements>
+  ) : (
+    content
   );
 }
 

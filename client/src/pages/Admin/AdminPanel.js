@@ -5,7 +5,7 @@ const AdminPanel = () => {
   return (
     <>
       <Helmet>
-        <title>Admin Panel - Adult Content Platform</title>
+        <title>Admin Panel - Anime Video Platform</title>
         <meta name="description" content="Manage users, content, and platform settings." />
       </Helmet>
 

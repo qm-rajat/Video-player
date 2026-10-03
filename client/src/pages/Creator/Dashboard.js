@@ -5,8 +5,8 @@ const Dashboard = () => {
   return (
     <>
       <Helmet>
-        <title>Creator Dashboard - Adult Content Platform</title>
-        <meta name="description" content="Manage your content and view analytics." />
+        <title>Creator Dashboard - Anime Video Platform</title>
+        <meta name="description" content="Manage your anime content and view analytics." />
       </Helmet>
 
       <div className="space-y-6">

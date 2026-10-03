@@ -32,7 +32,7 @@ const ResetPassword = () => {
   return (
     <>
       <Helmet>
-        <title>Reset Password - Adult Content Platform</title>
+        <title>Reset Password - Anime Video Platform</title>
         <meta name="description" content="Create a new password for your account." />
       </Helmet>
 

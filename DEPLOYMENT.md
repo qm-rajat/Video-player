@@ -1,6 +1,6 @@
 # Deployment Guide
 
-This guide will walk you through deploying the Adult Content Platform to production.
+This guide will walk you through deploying the anime Content Platform to production.
 
 ## Prerequisites
 

@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: adult-content-api
+    name: anime-content-api
     env: node
     buildCommand: npm install
     startCommand: npm start
@@ -12,7 +12,7 @@ services:
         value: 10000
       - key: MONGO_URI
         fromDatabase:
-          name: adult-content-db
+          name: anime-content-db
           property: connectionString
       - key: JWT_SECRET
         generateValue: true
@@ -38,6 +38,6 @@ services:
         value: https://your-frontend-domain.vercel.app
 
 databases:
-  - name: adult-content-db
-    databaseName: adult_content_platform
+  - name: anime-content-db
+    databaseName: anime_content_platform
     user: admin

@@ -26,7 +26,7 @@ const Header = () => {
               <span className="text-white font-bold text-lg">A</span>
             </div>
             <span className="text-xl font-bold text-white hidden sm:block">
-              AdultPlatform
+              AnimePlatform
             </span>
           </Link>
 

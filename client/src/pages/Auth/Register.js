@@ -31,21 +31,21 @@ const Register = () => {
   return (
     <>
       <Helmet>
-        <title>Sign Up - Adult Content Platform</title>
-        <meta name="description" content="Create your account to access exclusive adult content." />
+        <title>Sign Up - Anime Video Platform</title>
+        <meta name="description" content="Create your account to stream anime, share animations, and support anime creators." />
       </Helmet>
 
       <div className="min-h-screen bg-dark-900 flex items-center justify-center p-4">
-        <div className="max-w-md w-full glass rounded-2xl p-8">
+        <div className="max-w-md w-full glass rounded-2xl p-8 border border-dark-700">
           <div className="text-center mb-8">
             <Link to="/" className="inline-flex items-center space-x-2 mb-6">
               <div className="w-10 h-10 bg-gradient-primary rounded-lg flex items-center justify-center">
                 <span className="text-white font-bold text-xl">A</span>
               </div>
-              <span className="text-2xl font-bold text-white">AdultPlatform</span>
+              <span className="text-2xl font-bold text-white">AnimePlatform</span>
             </Link>
             <h1 className="text-2xl font-bold text-white mb-2">Create Account</h1>
-            <p className="text-dark-300">Join our community of creators and fans</p>
+            <p className="text-dark-300">Join our anime community of animators, editors, and fans</p>
           </div>
 
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">

@@ -39,18 +39,18 @@ const Login = () => {
   return (
     <>
       <Helmet>
-        <title>Login - Adult Content Platform</title>
-        <meta name="description" content="Login to access exclusive adult content and connect with creators." />
+        <title>Login - Anime Video Platform</title>
+        <meta name="description" content="Login to access exclusive anime content, AMVs, and connect with anime creators." />
       </Helmet>
 
       <div className="min-h-screen bg-dark-900 flex items-center justify-center p-4">
-        <div className="max-w-md w-full glass rounded-2xl p-8">
+        <div className="max-w-md w-full glass rounded-2xl p-8 border border-dark-700">
           <div className="text-center mb-8">
             <Link to="/" className="inline-flex items-center space-x-2 mb-6">
               <div className="w-10 h-10 bg-gradient-primary rounded-lg flex items-center justify-center">
                 <span className="text-white font-bold text-xl">A</span>
               </div>
-              <span className="text-2xl font-bold text-white">AdultPlatform</span>
+              <span className="text-2xl font-bold text-white">AnimePlatform</span>
             </Link>
             <h1 className="text-2xl font-bold text-white mb-2">Welcome Back</h1>
             <p className="text-dark-300">Sign in to your account to continue</p>

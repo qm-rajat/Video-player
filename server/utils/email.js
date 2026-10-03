@@ -42,7 +42,7 @@ const sendEmail = async (options) => {
     const transporter = createTransporter();
 
     const mailOptions = {
-      from: process.env.EMAIL_FROM || 'noreply@adultplatform.com',
+      from: process.env.EMAIL_FROM || 'noreply@animeplatform.com',
       to: options.to,
       subject: options.subject,
       html: options.html,
@@ -62,14 +62,14 @@ const sendEmail = async (options) => {
 // Email templates
 const emailTemplates = {
   welcome: (username) => ({
-    subject: 'Welcome to AdultPlatform!',
+    subject: 'Welcome to AnimePlatform!',
     html: `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-        <h1 style="color: #ef4444;">Welcome to AdultPlatform!</h1>
+        <h1 style="color: #8b5cf6;">Welcome to AnimePlatform!</h1>
         <p>Hi ${username},</p>
-        <p>Welcome to our platform! We're excited to have you join our community.</p>
-        <p>Get started by exploring content from our verified creators.</p>
-        <p>Best regards,<br>The AdultPlatform Team</p>
+        <p>Welcome to our platform! We're excited to have you join our anime community.</p>
+        <p>Get started by exploring anime streams, AMVs, and animations from our verified animators.</p>
+        <p>Best regards,<br>The AnimePlatform Team</p>
       </div>
     `
   }),
@@ -78,18 +78,18 @@ const emailTemplates = {
     subject: 'Verify Your Email Address',
     html: `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-        <h1 style="color: #ef4444;">Verify Your Email</h1>
+        <h1 style="color: #8b5cf6;">Verify Your Email</h1>
         <p>Hi ${username},</p>
         <p>Please click the button below to verify your email address:</p>
         <p>
-          <a href="${verificationUrl}" style="background-color: #ef4444; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; display: inline-block;">
+          <a href="${verificationUrl}" style="background-color: #8b5cf6; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; display: inline-block;">
             Verify Email
           </a>
         </p>
         <p>If the button doesn't work, copy and paste this link into your browser:</p>
         <p>${verificationUrl}</p>
         <p>This link will expire in 24 hours.</p>
-        <p>Best regards,<br>The AdultPlatform Team</p>
+        <p>Best regards,<br>The AnimePlatform Team</p>
       </div>
     `
   }),
@@ -98,11 +98,11 @@ const emailTemplates = {
     subject: 'Password Reset Request',
     html: `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-        <h1 style="color: #ef4444;">Reset Your Password</h1>
+        <h1 style="color: #8b5cf6;">Reset Your Password</h1>
         <p>Hi ${username},</p>
         <p>You requested a password reset. Click the button below to create a new password:</p>
         <p>
-          <a href="${resetUrl}" style="background-color: #ef4444; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; display: inline-block;">
+          <a href="${resetUrl}" style="background-color: #8b5cf6; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; display: inline-block;">
             Reset Password
           </a>
         </p>
@@ -110,7 +110,7 @@ const emailTemplates = {
         <p>${resetUrl}</p>
         <p>This link will expire in 10 minutes.</p>
         <p>If you didn't request this, please ignore this email.</p>
-        <p>Best regards,<br>The AdultPlatform Team</p>
+        <p>Best regards,<br>The AnimePlatform Team</p>
       </div>
     `
   }),
@@ -119,12 +119,12 @@ const emailTemplates = {
     subject: 'Subscription Confirmed',
     html: `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-        <h1 style="color: #ef4444;">Subscription Confirmed!</h1>
+        <h1 style="color: #8b5cf6;">Subscription Confirmed!</h1>
         <p>Hi ${username},</p>
         <p>Your ${tier} subscription to ${creatorName} has been confirmed!</p>
         <p>You now have access to their exclusive content.</p>
         <p>Enjoy your subscription!</p>
-        <p>Best regards,<br>The AdultPlatform Team</p>
+        <p>Best regards,<br>The AnimePlatform Team</p>
       </div>
     `
   }),
@@ -137,7 +137,7 @@ const emailTemplates = {
         <p>Hi ${username},</p>
         <p>Your content "${contentTitle}" has been approved and is now live on the platform!</p>
         <p>Keep creating amazing content for your audience.</p>
-        <p>Best regards,<br>The AdultPlatform Team</p>
+        <p>Best regards,<br>The AnimePlatform Team</p>
       </div>
     `
   }),
@@ -151,7 +151,7 @@ const emailTemplates = {
         <p>Your content "${contentTitle}" requires some adjustments before it can be published.</p>
         <p><strong>Reason:</strong> ${reason}</p>
         <p>Please make the necessary changes and resubmit your content.</p>
-        <p>Best regards,<br>The AdultPlatform Team</p>
+        <p>Best regards,<br>The AnimePlatform Team</p>
       </div>
     `
   })

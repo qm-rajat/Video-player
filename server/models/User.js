@@ -54,7 +54,8 @@ const UserSchema = new mongoose.Schema({
     socialLinks: {
       twitter: String,
       instagram: String,
-      onlyfans: String
+      youtube: String,
+      patreon: String
     }
   },
   subscriptions: [{

@@ -5,8 +5,8 @@ const Upload = () => {
   return (
     <>
       <Helmet>
-        <title>Upload Content - Adult Content Platform</title>
-        <meta name="description" content="Upload new content to share with your audience." />
+        <title>Upload Content - Anime Video Platform</title>
+        <meta name="description" content="Upload new anime animations, episodes, and AMVs to share with your audience." />
       </Helmet>
 
       <div className="space-y-6">

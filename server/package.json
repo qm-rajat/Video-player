@@ -1,7 +1,7 @@
 {
-  "name": "adult-content-server",
+  "name": "anime-content-server",
   "version": "1.0.0",
-  "description": "Backend API for adult content platform",
+  "description": "Backend API for anime content platform",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",

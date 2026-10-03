@@ -89,8 +89,8 @@ const Legal = () => {
   return (
     <>
       <Helmet>
-        <title>{title} - Adult Content Platform</title>
-        <meta name="description" content={`${title} for Adult Content Platform`} />
+        <title>{title} - Anime Video Platform</title>
+        <meta name="description" content={`${title} for Anime Video Platform`} />
       </Helmet>
 
       <div className="min-h-screen bg-dark-900 py-12">
